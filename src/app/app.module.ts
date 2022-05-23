@@ -10,6 +10,11 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DeviceRegisterComponent } from './components/device-register/device-register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -19,13 +24,19 @@ import { ProfileComponent } from './components/profile/profile.component';
     DevicesComponent,
     NotFoundComponent,
     DeviceRegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
