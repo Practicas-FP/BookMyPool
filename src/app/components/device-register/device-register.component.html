@@ -1,3 +1,74 @@
-<p>
-  devices-register works!
-</p>
+<div class="example-action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add new Smartphone
+      </mat-panel-title>
+      <mat-panel-description>
+        Form to register a new booked smartphone
+        <mat-icon>add</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Serial Number</mat-label>
+      <input matInput type="text" min="15" max="15" #serialNumber required>
+      <mat-error *ngIf="SerialNumbControl.hasError('required')">Please write the Serial Number</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Brand</mat-label>
+      <mat-select [(value)]="brandSmartphone"  #brand required>
+        <mat-option value="Huawei">Huawei</mat-option>
+        <mat-option value="Realme">Realme</mat-option>
+        <mat-option value="Xiaomi">Xiaomi</mat-option>
+        <mat-option value="OnePlus">OnePlus</mat-option>
+        <mat-option value="Nokia">Nokia</mat-option>
+        <mat-option value="Samsung">Samsung</mat-option>
+        <mat-option value="Apple">Apple</mat-option>
+      </mat-select>
+      <mat-error *ngIf="BrandControl.hasError('required')">Please choose a Brand</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Model</mat-label>
+      <input matInput type="text" min="1" #model required>
+      <mat-error *ngIf="ModelControl.hasError('required')">Please choose a Model</mat-error>
+    </mat-form-field>
+
+   <mat-form-field appearance="fill">
+      <mat-label>Operative System</mat-label>
+      <mat-select #os required>
+        <mat-option *ngIf="brandSmartphone === 'Apple' || brandSmartphone === 'null' " value="iOS">iOS</mat-option>
+        <mat-option *ngIf="brandSmartphone != 'Apple' " value="Android">Android</mat-option>
+      </mat-select>
+      <mat-error *ngIf="OSControl.hasError('required')">Please choose an OS</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Version</mat-label>
+      <input matInput type="text" min="1"  #version required>
+      <mat-error *ngIf="VersionControl.hasError('required')">Please write the version</mat-error>
+    </mat-form-field>
+
+    <button mat-stroked-button mat-flat-button style="margin-left: 5%;" (click)="pushForm(serialNumber.value, brand.value, model.value, os.value, version.value)" color="primary">Add</button>
+
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your name and age
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
