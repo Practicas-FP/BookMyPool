@@ -15,8 +15,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,11 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatInputModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
