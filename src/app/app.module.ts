@@ -27,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatExpansionModule,
     MatSelectModule,
     MatSnackBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

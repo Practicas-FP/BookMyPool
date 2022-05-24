@@ -26,4 +26,8 @@ export class EditDialogComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  alert() {
+    alert(this.data.serialNumber)
+  }
 }
