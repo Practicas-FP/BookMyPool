@@ -70,7 +70,9 @@ body {
   text-transform: capitalize;
   font-size: 15px;
   padding: 10px 19px;
-  cursor: pointer
+  cursor: pointer;
+  background-color: #002b5c;
+  
 }
 
 .m-b-20 {
