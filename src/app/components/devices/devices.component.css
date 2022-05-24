@@ -8,5 +8,15 @@ table {
 }
 
 td, th {
-  width: 25%;
+  width: 20%;
+}
+
+.example-container {
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+.isBooked {
+  background-color: rgb(236, 236, 236);
 }
