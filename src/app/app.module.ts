@@ -10,6 +10,7 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DeviceRegisterComponent } from './components/device-register/device-register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EditDialogComponent } from './components/devices/edit-dialog/edit-dialog.component';
 //Angular material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,6 +28,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NotFoundComponent,
     DeviceRegisterComponent,
     ProfileComponent,
+    EditDialogComponent
 
   ],
   imports: [
