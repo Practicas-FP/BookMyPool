@@ -35,6 +35,38 @@ export class DevicesComponent implements AfterViewInit {
       operativeSystem: 'Android',
       version: 12
     });
+    devices.push({
+      id: 1,
+      serialNumber: 'bb',
+      brand: 'xiaomi',
+      model: 'Readmi Note 9 Pro',
+      operativeSystem: 'Android',
+      version: 12
+    });
+    devices.push({
+      id: 1,
+      serialNumber: 'bb',
+      brand: 'xiaomi',
+      model: 'Readmi Note 9 Pro',
+      operativeSystem: 'Android',
+      version: 12
+    });
+    devices.push({
+      id: 1,
+      serialNumber: 'bb',
+      brand: 'xiaomi',
+      model: 'Readmi Note 9 Pro',
+      operativeSystem: 'Android',
+      version: 12
+    });
+    devices.push({
+      id: 1,
+      serialNumber: 'bb',
+      brand: 'xiaomi',
+      model: 'Readmi Note 9 Pro',
+      operativeSystem: 'Android',
+      version: 12
+    });
 
     this.dataSource = new MatTableDataSource(devices);
   }
