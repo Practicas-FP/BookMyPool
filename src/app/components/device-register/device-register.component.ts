@@ -15,6 +15,7 @@ export class DeviceRegisterComponent implements OnInit {
   public OSControl = new FormControl('', Validators.required);
   public VersionControl = new FormControl('', Validators.required);
   public brandSmartphone = 'null';
+  private durationInSeconds: number = 2;
 
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
@@ -31,8 +32,8 @@ export class DeviceRegisterComponent implements OnInit {
   }
 
   openSnackBar(){
-    this._snackBar.open('Added, nice job ;D', 'Okey');
+    this._snackBar.open('Added, nice job ;D', 'Okey',{
+      duration: this.durationInSeconds * 1000,
+    });
   }
-
-
 }
