@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DevicesData } from 'src/app/models/device';
 import { ApiService } from 'src/app/services/api.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EditDialogComponent } from './edit-dialog/edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-devices',
@@ -17,7 +19,7 @@ export class DevicesComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
-  constructor(public apiService: ApiService) {
+  constructor(public apiService: ApiService, public dialog: MatDialog) {
     // Obtener los datos de la BD
     const devices: Array<DevicesData> = [];
     devices.push({
@@ -30,7 +32,7 @@ export class DevicesComponent implements AfterViewInit {
       isBooked: 0
     });
     devices.push({
-      id: 1,
+      id: 2,
       serialNumber: 'bb',
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
@@ -39,7 +41,7 @@ export class DevicesComponent implements AfterViewInit {
       isBooked: 1
     });
     devices.push({
-      id: 1,
+      id: 3,
       serialNumber: 'bb',
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
@@ -48,7 +50,7 @@ export class DevicesComponent implements AfterViewInit {
       isBooked: 0
     });
     devices.push({
-      id: 1,
+      id: 4,
       serialNumber: 'bb',
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
@@ -57,7 +59,7 @@ export class DevicesComponent implements AfterViewInit {
       isBooked: 1
     });
     devices.push({
-      id: 1,
+      id: 5,
       serialNumber: 'bb',
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
@@ -66,7 +68,7 @@ export class DevicesComponent implements AfterViewInit {
       isBooked: 1
     });
     devices.push({
-      id: 1,
+      id: 6,
       serialNumber: 'bb',
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
@@ -90,5 +92,17 @@ export class DevicesComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDialog(data: DevicesData): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '250px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
   }
 }
