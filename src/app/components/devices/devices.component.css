@@ -12,7 +12,8 @@ td, th {
 }
 
 .example-container {
-  height: 296px;
+  height: auto;
+  width: auto;
   overflow: auto;
   text-align: center;
 }
