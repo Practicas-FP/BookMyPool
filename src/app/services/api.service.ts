@@ -5,6 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-constructor() { }
+  constructor() { }
+
+  bookDevice(id: Number) {
+    alert(id)
+  }
 
 }
