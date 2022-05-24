@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Edit device:</h1>
+
+<form>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Serial number</mat-label>
+      <input matInput required [(ngModel)]="data.serialNumber" [value]="data.serialNumber">
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Brand</mat-label>
+      <mat-select [(value)]="brandSmartphone" #brand required>
+        <mat-option value="Huawei">Huawei</mat-option>
+        <mat-option value="Realme">Realme</mat-option>
+        <mat-option value="Xiaomi">Xiaomi</mat-option>
+        <mat-option value="OnePlus">OnePlus</mat-option>
+        <mat-option value="Nokia">Nokia</mat-option>
+        <mat-option value="Samsung">Samsung</mat-option>
+        <mat-option value="Apple">Apple</mat-option>
+      </mat-select>
+      <mat-error *ngIf="BrandControl.hasError('required')">Please choose a Brand</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Model</mat-label>
+      <input matInput required>
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Operative System</mat-label>
+      <mat-select #os required>
+        <mat-option *ngIf="brandSmartphone === 'Apple' || brandSmartphone === 'null' " value="iOS">iOS</mat-option>
+        <mat-option *ngIf="brandSmartphone != 'Apple' " value="Android">Android</mat-option>
+      </mat-select>
+      <mat-error *ngIf="OSControl.hasError('required')">Please choose an OS</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Version</mat-label>
+      <input matInput required>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button (click)="alert()" type="submit" mat-raised-button color="primary">Submit</button>
+    <button mat-button class="mat-focus-indicator mat-raised-button mat-button-base mat-raised"
+      (click)="onNoClick()">Close</button>
+  </div>
+</form>
