@@ -5,4 +5,5 @@ export interface DevicesData {
   model: string;
   operativeSystem: string;
   version: Number;
+  isBooked: Number
 }

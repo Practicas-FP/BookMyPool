@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DevicesData } from 'src/app/models/device';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-devices',
@@ -10,13 +11,13 @@ import { DevicesData } from 'src/app/models/device';
   styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['serialNumber', 'brand', 'model', 'operativeSystem', 'version'];
+  displayedColumns: string[] = ['serialNumber', 'brand', 'model', 'operativeSystem', 'version', 'actions'];
   dataSource: MatTableDataSource<DevicesData>;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
-  constructor() {
+  constructor(public apiService: ApiService) {
     // Obtener los datos de la BD
     const devices: Array<DevicesData> = [];
     devices.push({
@@ -25,7 +26,8 @@ export class DevicesComponent implements AfterViewInit {
       brand: 'xiaomi',
       model: 'Readmi Note 10 Pro',
       operativeSystem: 'Android',
-      version: 11
+      version: 11,
+      isBooked: 0
     });
     devices.push({
       id: 1,
@@ -33,7 +35,8 @@ export class DevicesComponent implements AfterViewInit {
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
-      version: 12
+      version: 12,
+      isBooked: 1
     });
     devices.push({
       id: 1,
@@ -41,7 +44,8 @@ export class DevicesComponent implements AfterViewInit {
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
-      version: 12
+      version: 12,
+      isBooked: 0
     });
     devices.push({
       id: 1,
@@ -49,7 +53,8 @@ export class DevicesComponent implements AfterViewInit {
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
-      version: 12
+      version: 12,
+      isBooked: 1
     });
     devices.push({
       id: 1,
@@ -57,7 +62,8 @@ export class DevicesComponent implements AfterViewInit {
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
-      version: 12
+      version: 12,
+      isBooked: 1
     });
     devices.push({
       id: 1,
@@ -65,7 +71,8 @@ export class DevicesComponent implements AfterViewInit {
       brand: 'xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
-      version: 12
+      version: 12,
+      isBooked: 0
     });
 
     this.dataSource = new MatTableDataSource(devices);
