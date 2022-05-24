@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DevicesData } from 'src/app/models/device';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EditDialogComponent } from './edit-dialog/edit-dialog/edit-dialog.component';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-devices',
