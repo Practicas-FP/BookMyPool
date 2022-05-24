@@ -96,7 +96,7 @@ export class DevicesComponent implements AfterViewInit {
 
   openDialog(data: DevicesData): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '250px',
+      width: '500px',
       data: data
     });
 
