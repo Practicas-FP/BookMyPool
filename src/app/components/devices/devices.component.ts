@@ -22,6 +22,9 @@ export class DevicesComponent implements AfterViewInit {
   @ViewChild(MatSort) sort?: MatSort;
 
   constructor(public apiService: ApiService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
+    //apiService.getBooks().subscribe(res => console.log(res));
+
+
     // Obtener los datos de la BD
     const devices: Array<DevicesData> = [];
     devices.push({
