@@ -1,15 +1,15 @@
 <h1 mat-dialog-title>Edit device:</h1>
 
 <form>
-  <div class="example-container">
-    <mat-form-field appearance="fill">
+  <div style="width: 100%;" class="example-container">
+    <mat-form-field style="width: 100%;" appearance="fill">
       <mat-label>Serial number</mat-label>
       <input matInput required [(ngModel)]="data.serialNumber" [value]="data.serialNumber">
     </mat-form-field>
   </div>
 
-  <div class="example-container">
-    <mat-form-field appearance="fill">
+  <div style="width: 100%;" class="example-container">
+    <mat-form-field style="width: 49.1%;" appearance="fill">
       <mat-label>Brand</mat-label>
       <mat-select [(value)]="brandSmartphone" #brand required>
         <mat-option value="Huawei">Huawei</mat-option>
@@ -23,14 +23,14 @@
       <mat-error *ngIf="BrandControl.hasError('required')">Please choose a Brand</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field style="width: 49%;" appearance="fill">
       <mat-label>Model</mat-label>
       <input matInput required>
     </mat-form-field>
   </div>
 
-  <div class="example-container">
-    <mat-form-field appearance="fill">
+  <div style="width: 100%;" class="example-container">
+    <mat-form-field style="width: 49.1%;" appearance="fill">
       <mat-label>Operative System</mat-label>
       <mat-select #os required>
         <mat-option *ngIf="brandSmartphone === 'Apple' || brandSmartphone === 'null' " value="iOS">iOS</mat-option>
@@ -39,13 +39,13 @@
       <mat-error *ngIf="OSControl.hasError('required')">Please choose an OS</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field style="width: 49%;" appearance="fill">
       <mat-label>Version</mat-label>
       <input matInput required>
     </mat-form-field>
   </div>
 
-  <div mat-dialog-actions>
+  <div align="center" style="width: 100%; margin-bottom: -5px;" mat-dialog-actions>
     <button (click)="alert()" type="submit" mat-raised-button color="primary">Submit</button>
     <button mat-button class="mat-focus-indicator mat-raised-button mat-button-base mat-raised"
       (click)="onNoClick()">Close</button>
