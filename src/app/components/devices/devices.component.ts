@@ -6,6 +6,7 @@ import { DevicesData } from 'src/app/models/device';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-devices',
@@ -15,11 +16,12 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 export class DevicesComponent implements AfterViewInit {
   displayedColumns: string[] = ['state','serialNumber', 'brand', 'model', 'operativeSystem', 'version', 'actions'];
   dataSource: MatTableDataSource<DevicesData>;
+  private durationInSeconds: number = 2;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
-  constructor(public apiService: ApiService, public dialog: MatDialog) {
+  constructor(public apiService: ApiService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
     // Obtener los datos de la BD
     const devices: Array<DevicesData> = [];
     devices.push({
@@ -104,8 +106,9 @@ export class DevicesComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //this.animal = result;
+      if (result) {
+        this.openSnackBar('Edited, nice job ;D');
+      }
     });
   }
 
@@ -116,6 +119,18 @@ export class DevicesComponent implements AfterViewInit {
         device: null,
         edit: false
       }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openSnackBar('Added, nice job ;D');
+      }
+    });
+  }
+
+  openSnackBar(msg: string){
+    this._snackBar.open(msg, 'Okey',{
+      duration: this.durationInSeconds * 1000,
     });
   }
 }
