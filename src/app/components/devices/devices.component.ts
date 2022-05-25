@@ -94,15 +94,29 @@ export class DevicesComponent implements AfterViewInit {
     }
   }
 
-  openDialog(data: DevicesData): void {
+  openDialogEdit(data: DevicesData): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '500px',
-      data: data
+      data: {
+        device: data,
+        edit: true
+      },
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       //this.animal = result;
+    });
+  }
+
+  openDialogCreate(): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '500px',
+      data: {
+        device: null,
+        edit: false
+      }
     });
   }
 }
