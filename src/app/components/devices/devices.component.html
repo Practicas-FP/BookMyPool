@@ -6,6 +6,12 @@
 <div class="example-container">
   <table mat-table [dataSource]="dataSource" matSort>
 
+    <!-- State Column -->
+    <ng-container matColumnDef="state">
+      <th class="semaforo" mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+      <td class="semaforo" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"><div [ngClass]="row.isBooked ? 'isBookedSemaforo' : ''" style="background-color: chartreuse; width: 20px;height: 20px;border-radius: 50px;"></div></td>
+    </ng-container>
+
     <!-- Serial number Column -->
     <ng-container matColumnDef="serialNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>

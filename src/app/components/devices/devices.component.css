@@ -11,6 +11,10 @@ td, th {
   width: 15%;
 }
 
+.semaforo{
+  width: 5%;
+}
+
 .example-container {
   height: auto;
   width: auto;
@@ -18,5 +22,9 @@ td, th {
 }
 
 .isBooked {
-  background-color: rgb(244, 241, 255);
+  background-color: rgb(237, 239, 255) !important;
+}
+
+.isBookedSemaforo {
+  background-color: red !important;
 }

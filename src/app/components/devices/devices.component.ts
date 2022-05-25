@@ -13,7 +13,7 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
   styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['serialNumber', 'brand', 'model', 'operativeSystem', 'version', 'actions'];
+  displayedColumns: string[] = ['state','serialNumber', 'brand', 'model', 'operativeSystem', 'version', 'actions'];
   dataSource: MatTableDataSource<DevicesData>;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
