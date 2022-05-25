@@ -17,8 +17,8 @@ export class EditDialogComponent implements OnInit {
   public OSControl = new FormControl('', Validators.required);
   public VersionControl = new FormControl('', Validators.required);
   public brandSmartphone = 'null';
-  selectedBrand = new FormControl(this.data.device.brand, [Validators.required]);
-  selectedOs = new FormControl(this.data.device.operativeSystem, [Validators.required]);
+  selectedBrand = new FormControl(this.data.device ? this.data.device.brand : null, [Validators.required]);
+  selectedOs = new FormControl(this.data.device ? this.data.device.operativeSystem : null, [Validators.required]);
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
@@ -33,14 +33,26 @@ export class EditDialogComponent implements OnInit {
   }
 
   save(serialNumber: string, brand: string, model: string, os: string, version: string) {
-    this.apiService.postDevice({
-      id: null,
-      serialNumber: serialNumber,
-      brand: brand,
-      model: model,
-      operativeSystem: os,
-      version: Number(version),
-      isBooked: 0
-    });
+    if(this.data.edit) {
+      this.apiService.putDevice({
+        id: null,
+        serialNumber: serialNumber,
+        brand: brand,
+        model: model,
+        operativeSystem: os,
+        version: Number(version),
+        isBooked: 0
+      });
+    } else {
+      this.apiService.postDevice({
+        id: null,
+        serialNumber: serialNumber,
+        brand: brand,
+        model: model,
+        operativeSystem: os,
+        version: Number(version),
+        isBooked: 0
+      });
+    }
   }
 }
