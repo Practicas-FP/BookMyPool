@@ -30,17 +30,6 @@ td, th {
   overflow: auto;
 }
 
-.botonTabla {
-  width: 70px;
-  background-color: limegreen;
-  color: white;
-}
-
-.botonTabla:disabled {
-  background-color: darkgreen;
-  color: darkgray;
-}
-
 .isBooked {
   background-color: rgb(255, 241, 242) !important;
 }
