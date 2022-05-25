@@ -51,7 +51,9 @@
     <ng-container matColumnDef="actions">
       <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td class="anchoAction" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
-        <button mat-stroked-button [matMenuTriggerFor]="menu">Menu</button>
+        <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
+        </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="apiService.bookDevice(row.id)">Book</button>
           <button mat-menu-item (click)="openDialogEdit(row)">Edit</button>
