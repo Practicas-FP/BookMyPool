@@ -54,5 +54,7 @@ export class EditDialogComponent implements OnInit {
         isBooked: 0
       });
     }
+
+    this.dialogRef.close(true);
   }
 }

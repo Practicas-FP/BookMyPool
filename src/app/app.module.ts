@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { DeviceRegisterComponent } from './components/device-register/device-register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditDialogComponent } from './components/devices/edit-dialog/edit-dialog.component';
 //Angular material
@@ -37,10 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     DevicesComponent,
     NotFoundComponent,
-    DeviceRegisterComponent,
     ProfileComponent,
     EditDialogComponent
-
   ],
   imports: [
     BrowserModule,
