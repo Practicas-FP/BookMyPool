@@ -51,10 +51,10 @@
     <ng-container matColumnDef="actions">
       <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td class="anchoAction" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
-        <button class="botonTabla" style="margin: 5px 5px 5px 0;" mat-flat-button disabled="{{row.isBooked ? true : false}}"
+        <button color= "primary" class="botonTabla" style="margin: 5px 5px 5px 0;" mat-flat-button disabled="{{row.isBooked ? true : false}}"
           (click)="apiService.bookDevice(row.id)">Book</button>
-        <button class="botonTabla" style="background-color: blue; color:white;margin: 5px 5px 5px 0;" mat-flat-button (click)="openDialogEdit(row)">Edit</button>
-        <button class="botonTabla" style="background-color: red; color:white;margin: 5px 5px 5px 0;" mat-flat-button (click)="apiService.deleteDevice(row.id)">Delete</button>
+        <button color="primary" class="botonTabla" style="margin: 5px 5px 5px 0;" mat-flat-button (click)="openDialogEdit(row)">Edit</button>
+        <button color="warn" class="botonTabla" style="margin: 5px 5px 5px 0;" mat-flat-button (click)="apiService.deleteDevice(row.id)">Delete</button>
       </td>
     </ng-container>
 

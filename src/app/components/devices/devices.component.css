@@ -32,14 +32,6 @@ td, th {
 
 .botonTabla{
   width: 70px;
-  background-color: limegreen;
-  color: white;
-}
-
-
-.botonTabla:disabled{
-  background-color: darkgreen;
-  color: darkgray;
 }
 
 .isBooked {
