@@ -12,15 +12,15 @@ td, th {
   padding: 10px;
 }
 
-.anchoModel{
- width: 30%;
+.anchoModel {
+  width: 30%;
 }
 
-.anchoAction{
+.anchoAction {
   width: 17%;
- }
+}
 
-.semaforo{
+.semaforo {
   width: 5%;
 }
 
@@ -30,14 +30,13 @@ td, th {
   overflow: auto;
 }
 
-.botonTabla{
+.botonTabla {
   width: 70px;
   background-color: limegreen;
   color: white;
 }
 
-
-.botonTabla:disabled{
+.botonTabla:disabled {
   background-color: darkgreen;
   color: darkgray;
 }
@@ -68,13 +67,12 @@ td, th {
     width: 10%;
     padding: 10px;
   }
-  
-  .anchoModel{
-   width: 30%;
+
+  .anchoModel {
+    width: 30%;
   }
-  
-  .anchoAction{
+
+  .anchoAction {
     width: 16%;
-   }  
-  
   }
+}
