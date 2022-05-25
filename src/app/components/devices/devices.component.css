@@ -8,8 +8,17 @@ table {
 }
 
 td, th {
-  width: 15%;
+  width: 10%;
+  padding: 10px;
 }
+
+.anchoModel{
+ width: 30%;
+}
+
+.anchoAction{
+  width: 17%;
+ }
 
 .semaforo{
   width: 5%;
@@ -21,8 +30,20 @@ td, th {
   overflow: auto;
 }
 
+.botonTabla{
+  width: 70px;
+  background-color: limegreen;
+  color: white;
+}
+
+
+.botonTabla:disabled{
+  background-color: darkgreen;
+  color: darkgray;
+}
+
 .isBooked {
-  background-color: rgb(255, 225, 227) !important;
+  background-color: rgb(255, 241, 242) !important;
 }
 
 .isBookedSemaforoRed {
@@ -34,9 +55,26 @@ td, th {
 }
 
 .isBookedSemaforoGreen {
-  background-color: chartreuse !important;
+  background-color: limegreen !important;
 
   width: 20px;
   height: 20px;
   border-radius: 50px;
 }
+
+@media only screen and (max-width : 600px) {
+
+  td, th {
+    width: 10%;
+    padding: 10px;
+  }
+  
+  .anchoModel{
+   width: 30%;
+  }
+  
+  .anchoAction{
+    width: 16%;
+   }  
+  
+  }
