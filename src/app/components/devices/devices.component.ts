@@ -100,8 +100,7 @@ export class DevicesComponent implements AfterViewInit {
       data: {
         device: data,
         edit: true
-      },
-
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
