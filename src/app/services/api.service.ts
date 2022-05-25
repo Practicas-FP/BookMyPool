@@ -47,4 +47,8 @@ export class ApiService {
   logIn(name: String, password: String) {
 
   }
+
+  returnDevice(id: Number) {
+
+  }
 }
