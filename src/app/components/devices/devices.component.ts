@@ -25,7 +25,7 @@ export class DevicesComponent implements AfterViewInit {
     devices.push({
       id: 1,
       serialNumber: 'AAA',
-      brand: 'xiaomi',
+      brand: 'Xiaomi',
       model: 'Readmi Note 10 Pro',
       operativeSystem: 'Android',
       version: 11,
@@ -34,7 +34,7 @@ export class DevicesComponent implements AfterViewInit {
     devices.push({
       id: 2,
       serialNumber: 'bb',
-      brand: 'xiaomi',
+      brand: 'Xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
       version: 12,
@@ -43,7 +43,7 @@ export class DevicesComponent implements AfterViewInit {
     devices.push({
       id: 3,
       serialNumber: 'bb',
-      brand: 'xiaomi',
+      brand: 'Xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
       version: 12,
@@ -52,7 +52,7 @@ export class DevicesComponent implements AfterViewInit {
     devices.push({
       id: 4,
       serialNumber: 'bb',
-      brand: 'xiaomi',
+      brand: 'Xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
       version: 12,
@@ -61,7 +61,7 @@ export class DevicesComponent implements AfterViewInit {
     devices.push({
       id: 5,
       serialNumber: 'bb',
-      brand: 'xiaomi',
+      brand: 'Xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
       version: 12,
@@ -70,7 +70,7 @@ export class DevicesComponent implements AfterViewInit {
     devices.push({
       id: 6,
       serialNumber: 'bb',
-      brand: 'xiaomi',
+      brand: 'Xiaomi',
       model: 'Readmi Note 9 Pro',
       operativeSystem: 'Android',
       version: 12,
