@@ -17,12 +17,12 @@ export class EditDialogComponent implements OnInit {
   public OSControl = new FormControl('', Validators.required);
   public VersionControl = new FormControl('', Validators.required);
   public brandSmartphone = 'null';
-  selectedBrand = new FormControl(this.data.brand, [Validators.required]);
-  selectedOs = new FormControl(this.data.operativeSystem, [Validators.required]);
+  selectedBrand = new FormControl(this.data.device.brand, [Validators.required]);
+  selectedOs = new FormControl(this.data.device.operativeSystem, [Validators.required]);
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DevicesData,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public apiService: ApiService) { }
 
   ngOnInit() {
