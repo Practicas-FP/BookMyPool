@@ -25,6 +25,18 @@ td, th {
   background-color: rgb(237, 239, 255) !important;
 }
 
-.isBookedSemaforo {
+.isBookedSemaforoRed {
   background-color: red !important;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.isBookedSemaforoGreen {
+  background-color: chartreuse !important;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
 }
