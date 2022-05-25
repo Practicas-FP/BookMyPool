@@ -92,5 +92,4 @@ export class ProfileComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }

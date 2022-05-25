@@ -3,45 +3,44 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Xiaomi" #input>
 </mat-form-field>
 
-<div  class="example-container">
+<div class="example-container">
   <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- Serial number Column -->
     <ng-container matColumnDef="serialNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.serialNumber }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.serialNumber }} </td>
     </ng-container>
 
     <!-- Brand Column -->
     <ng-container matColumnDef="brand">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.brand }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.brand }} </td>
     </ng-container>
 
     <!-- Model Column -->
     <ng-container matColumnDef="model">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.model }} </td>
+      <th class="anchoModel" mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
+      <td class="anchoModel" mat-cell *matCellDef="let row"> {{ row.model }} </td>
     </ng-container>
 
     <!-- Operative system Column -->
     <ng-container matColumnDef="operativeSystem">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Operative system </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.operativeSystem }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.operativeSystem }} </td>
     </ng-container>
 
     <!-- Version Column -->
     <ng-container matColumnDef="version">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Version </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.version }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.version }} </td>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
-        <button mat-flat-button color="accent">Edit</button>
-        <button style="margin-left: 5px;" *ngIf="!row.isBooked" mat-flat-button color="primary" (click)="apiService.bookDevice(row.id)">Book</button>
+      <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+      <td class="anchoAction" mat-cell *matCellDef="let row">
+        <button mat-raised-button color="warn" (click)="apiService.returnDevice(row.id)">Return device</button>
       </td>
     </ng-container>
 
