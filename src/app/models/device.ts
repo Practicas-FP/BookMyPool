@@ -1,5 +1,5 @@
 export interface DevicesData {
-  id: Number;
+  id: Number | null;
   serialNumber: string;
   brand: string;
   model: string;
