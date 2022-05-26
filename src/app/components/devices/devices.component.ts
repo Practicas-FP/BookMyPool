@@ -1,12 +1,14 @@
-import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { DevicesData } from 'src/app/models/device';
 import { ApiService } from 'src/app/services/api.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-devices',
@@ -18,7 +20,11 @@ export class DevicesComponent implements AfterViewInit {
   dataSource!: MatTableDataSource<DevicesData>;
   private durationInSeconds: number = 2;
   public devices: Array<DevicesData> = [];
+  ELEMENT_DATA: any[] = [
+    {position: 0, name: 'null', weight: 0, symbol: 'null'}
+  ];
 
+  @ViewChild(MatTable) table?: MatTable<DevicesData>;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
@@ -68,6 +74,13 @@ export class DevicesComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.openSnackBar('Edited, nice job ;D');
+        this.apiService.getDevices().subscribe(devices => {
+          devices.map(device => this.devices.push(device));
+          this.dataSource = new MatTableDataSource(this.devices);
+
+          this.dataSource.paginator = this.paginator!;
+          this.dataSource.sort = this.sort!;
+        });
       }
     });
   }
@@ -83,6 +96,14 @@ export class DevicesComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.devices = [];
+        this.apiService.getDevices().subscribe(devices => {
+          devices.map(device => this.devices.push(device));
+          this.dataSource = new MatTableDataSource(this.devices);
+          this.table?.renderRows();
+          this.dataSource.paginator = this.paginator!;
+          this.dataSource.sort = this.sort!;
+        });
         this.openSnackBar('Added, nice job ;D');
       }
     });
@@ -91,6 +112,18 @@ export class DevicesComponent implements AfterViewInit {
   openSnackBar(msg: string) {
     this._snackBar.open(msg, 'Okey', {
       duration: this.durationInSeconds * 1000,
+    });
+  }
+
+  deleteDevice(id: number){
+    this.apiService.deleteDevice(id);
+    this.devices = [];
+    this.apiService.getDevices().subscribe(devices => {
+      devices.map(device => this.devices.push(device));
+      this.dataSource = new MatTableDataSource(this.devices);
+      this.table?.renderRows();
+      this.dataSource.paginator = this.paginator!;
+      this.dataSource.sort = this.sort!;
     });
   }
 }

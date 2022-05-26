@@ -40,7 +40,7 @@
     <ng-container matColumnDef="actions">
       <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td class="anchoAction" mat-cell *matCellDef="let row">
-        <button mat-raised-button color="warn" (click)="apiService.returnDevice(row.id)">Return device</button>
+        <button mat-raised-button color="warn" (click)="returnDevice(row.id)">Return device</button>
       </td>
     </ng-container>
 

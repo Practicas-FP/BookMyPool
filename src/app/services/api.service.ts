@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookData } from '../models/book';
-import { BrandData } from '../models/brand';
 import { DevicesData } from '../models/device';
 import { UserData } from '../models/user';
 import { BrandData } from '../models/brand';

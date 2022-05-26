@@ -92,4 +92,16 @@ export class ProfileComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  returnDevice(id: number){
+    this.apiService.returnDevice(id);
+    //this.devices = [];
+    //this.apiService.getDevices().subscribe(devices => {
+    //  devices.map(device => this.devices.push(device));
+    //  this.dataSource = new MatTableDataSource(this.devices);
+    //  this.table?.renderRows();
+    //  this.dataSource.paginator = this.paginator!;
+    //  this.dataSource.sort = this.sort!;
+    //});
+  }
 }
