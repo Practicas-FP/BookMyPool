@@ -25,9 +25,7 @@ export class ProfileComponent implements AfterViewInit {
     apiService.getBooks(2).subscribe(books => {
       books.map(book => apiService.getDevice(book.deviceId).subscribe(device => {
         this.bookDevices.push({book: book, device: device});
-
         this.dataSource = new MatTableDataSource(this.bookDevices);
-
         this.dataSource.paginator = this.paginator!;
         this.dataSource.sort = this.sort!;
       }));
@@ -50,13 +48,15 @@ export class ProfileComponent implements AfterViewInit {
 
   returnDevice(id: number){
     this.apiService.returnDevice(id);
+    this.autoRefresh();
+  }
+
+  autoRefresh(){
     this.bookDevices = [];
     this.apiService.getBooks(2).subscribe(books => {
       books.map(book => this.apiService.getDevice(book.deviceId).subscribe(device => {
         this.bookDevices.push({book: book, device: device});
-
         this.dataSource = new MatTableDataSource(this.bookDevices);
-
         this.dataSource.paginator = this.paginator!;
         this.dataSource.sort = this.sort!;
       }));
