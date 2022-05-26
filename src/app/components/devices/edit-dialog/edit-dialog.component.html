@@ -12,13 +12,8 @@
     <mat-form-field class="input" appearance="fill">
       <mat-label>Brand</mat-label>
       <mat-select [formControl]="selectedBrand" #brand required>
-        <mat-option value="Huawei">Huawei</mat-option>
-        <mat-option value="Realme">Realme</mat-option>
-        <mat-option value="Xiaomi">Xiaomi</mat-option>
-        <mat-option value="OnePlus">OnePlus</mat-option>
-        <mat-option value="Nokia">Nokia</mat-option>
-        <mat-option value="Samsung">Samsung</mat-option>
-        <mat-option value="Apple">Apple</mat-option>
+        <mat-option *ngFor="let brand of brands" [value]="brand.name">{{ brand.name }}</mat-option>
+        <mat-option value="Otro">Otro</mat-option>
       </mat-select>
       <mat-error *ngIf="BrandControl.hasError('required')">Please choose a Brand</mat-error>
     </mat-form-field>
