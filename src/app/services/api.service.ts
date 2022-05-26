@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BookData } from '../models/book';
 import { DevicesData } from '../models/device';
+import { UserData } from '../models/user';
+import { BrandData } from '../models/brand';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,14 @@ export class ApiService {
 
   getBooks(): Observable<BookData[]> {
     return this.http.get<BookData[]>(`${this.baseUrl}/lend`);
+  }
+
+  getEmployee(): Observable<UserData[]> {
+    return this.http.get<UserData[]>(`${this.baseUrl}/employee`);
+  }
+
+  getBrand(): Observable<BrandData[]> {
+    return this.http.get<BrandData[]>(`${this.baseUrl}/brand`);
   }
 
   putDevice(device: DevicesData) {
