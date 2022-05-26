@@ -37,7 +37,6 @@ export class ApiService {
 
   getDevice(id: Number): Observable<DevicesData> {
     return this.http.get<DevicesData>(`${this.baseUrl}/device/${id}`);
-
   }
 
   putDevice(device: DevicesData) {
@@ -77,7 +76,7 @@ export class ApiService {
       })
     };
 
-    this.http.post<DevicesData>(`${this.baseUrl}/lend`, body, httpOptions)
+    this.http.post<BookData>(`${this.baseUrl}/lend/lenddevice`, body, httpOptions)
       .subscribe(res => console.log(`Book post: ${res}`));
   }
 

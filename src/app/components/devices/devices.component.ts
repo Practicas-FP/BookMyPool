@@ -58,7 +58,7 @@ export class DevicesComponent implements AfterViewInit {
       lendingDate: null,
       returningDate: null,
       deviceId: idDevice,
-      employeeId: 0 // Falta el id del user
+      employeeId: 2 // Falta el id del user
     });
   }
 

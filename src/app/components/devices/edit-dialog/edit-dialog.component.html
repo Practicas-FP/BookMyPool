@@ -28,8 +28,8 @@
     <mat-form-field class="input" appearance="fill">
       <mat-label>Operative System</mat-label>
       <mat-select #os required [formControl]="selectedOs">
-        <mat-option *ngIf="brandSmartphone === 'Apple' || brand.value === 'Apple' " value="iOS">iOS</mat-option>
-        <mat-option *ngIf="brandSmartphone != 'Apple'  || brand.value != 'Apple'  " value="Android">Android</mat-option>
+        <mat-option *ngIf="brandSmartphone === 'Apple' || brand.value === 'Apple'" value="iOS">iOS</mat-option>
+        <mat-option *ngIf="brandSmartphone !== 'Apple' || brand.value !== 'Apple'" value="Android">Android</mat-option>
       </mat-select>
       <mat-error *ngIf="OSControl.hasError('required')">Please choose an OS</mat-error>
     </mat-form-field>
