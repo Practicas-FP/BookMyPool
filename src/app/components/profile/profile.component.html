@@ -9,38 +9,38 @@
     <!-- Serial number Column -->
     <ng-container matColumnDef="serialNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>
-      <td mat-cell *matCellDef="let row"> {{ row.serialNumber }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.device.serialNumber }} </td>
     </ng-container>
 
     <!-- Brand Column -->
     <ng-container matColumnDef="brand">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
-      <td mat-cell *matCellDef="let row"> {{ row.brand }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.device.brand }} </td>
     </ng-container>
 
     <!-- Model Column -->
     <ng-container matColumnDef="model">
       <th class="anchoModel" mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
-      <td class="anchoModel" mat-cell *matCellDef="let row"> {{ row.model }} </td>
+      <td class="anchoModel" mat-cell *matCellDef="let row"> {{ row.device.model }} </td>
     </ng-container>
 
     <!-- Operative system Column -->
     <ng-container matColumnDef="operativeSystem">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Operative system </th>
-      <td mat-cell *matCellDef="let row"> {{ row.operativeSystem }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.device.operativeSystem }} </td>
     </ng-container>
 
     <!-- Version Column -->
     <ng-container matColumnDef="version">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Version </th>
-      <td mat-cell *matCellDef="let row"> {{ row.version }} </td>
+      <td mat-cell *matCellDef="let row"> {{ row.device.version }} </td>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td class="anchoAction" mat-cell *matCellDef="let row">
-        <button mat-raised-button color="warn" (click)="apiService.returnDevice(row.id)">Return device</button>
+        <button mat-raised-button color="warn" (click)="apiService.returnDevice(row.book.id)">Return device</button>
       </td>
     </ng-container>
 
