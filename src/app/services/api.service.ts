@@ -56,10 +56,18 @@ export class ApiService {
   }
 
   bookDevice(book: BookData) {
-    alert(book.id)
+    const body = JSON.stringify(book);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    this.http.post<DevicesData>(`${this.baseUrl}/lend`, body, httpOptions)
+      .subscribe(res => console.log(`Book post: ${res}`));
   }
 
-  logIn(name: String, password: String) {
+  logIn(email: String, password: String) {
 
   }
 
