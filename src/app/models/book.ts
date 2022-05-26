@@ -1,7 +1,7 @@
 export interface BookData {
-  id: Number;
-  lendingDate: String,
+  id: Number | null;
+  lendingDate: String | null,
   returningDate: String | null,
   deviceId: Number,
-  employeeId: number
+  employeeId: Number
 }

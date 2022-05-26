@@ -47,7 +47,13 @@ export class DevicesComponent implements AfterViewInit {
   }
 
   book(idDevice: Number) {
-    //apiService.bookDevice(row.id);
+    this.apiService.bookDevice({
+      id: null,
+      lendingDate: null,
+      returningDate: null,
+      deviceId: idDevice,
+      employeeId: 0 // Falta el id del user
+    });
   }
 
   openDialogEdit(data: DevicesData): void {
