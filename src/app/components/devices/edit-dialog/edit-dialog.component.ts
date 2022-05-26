@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BrandData } from 'src/app/models/brand';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -19,10 +20,15 @@ export class EditDialogComponent implements OnInit {
   selectedBrand = new FormControl(this.data.device ? this.data.device.brand : null, [Validators.required]);
   selectedOs = new FormControl(this.data.device ? this.data.device.operativeSystem : null, [Validators.required]);
 
+  public brands: Array<BrandData> = [];
+
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public apiService: ApiService) { }
+    public apiService: ApiService) {
+    apiService.getBrands().subscribe(devices => devices.map(brand => this.brands.push(brand))
+    );
+  }
 
   ngOnInit() {
   }
@@ -32,7 +38,7 @@ export class EditDialogComponent implements OnInit {
   }
 
   save(serialNumber: string, brand: string, model: string, os: string, version: string) {
-    if(this.data.edit) {
+    if (this.data.edit) {
       this.apiService.putDevice({
         id: this.data.device.id,
         serialNumber: serialNumber,

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookData } from '../models/book';
+import { BrandData } from '../models/brand';
 import { DevicesData } from '../models/device';
 import { UserData } from '../models/user';
 import { BrandData } from '../models/brand';
@@ -11,7 +12,7 @@ import { BrandData } from '../models/brand';
 })
 export class ApiService {
 
-  baseUrl: string = 'https://bookmypool.herokuapp.com/bookmypool';
+  baseUrl: string = 'https://book-my-pool.herokuapp.com/bookmypool';
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +20,12 @@ export class ApiService {
     return this.http.get<DevicesData[]>(`${this.baseUrl}/device`);
   }
 
-  getBooks(): Observable<BookData[]> {
-    return this.http.get<BookData[]>(`${this.baseUrl}/lend`);
+  getBooks(id: Number): Observable<BookData[]> {
+    return this.http.get<BookData[]>(`${this.baseUrl}/lend/byuser/${id}`);
+  }
+
+  getBrands(): Observable<BrandData[]> {
+    return this.http.get<BrandData[]>(`${this.baseUrl}/brand`);
   }
 
   getEmployee(): Observable<UserData[]> {
@@ -60,8 +65,8 @@ export class ApiService {
       .subscribe(res => console.log(`Device delete: ${res}`));
   }
 
-  bookDevice(id: Number) {
-    alert(id)
+  bookDevice(book: BookData) {
+    alert(book.id)
   }
 
   logIn(name: String, password: String) {
