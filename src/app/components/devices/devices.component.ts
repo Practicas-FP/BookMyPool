@@ -60,6 +60,7 @@ export class DevicesComponent implements AfterViewInit {
       deviceId: idDevice,
       employeeId: 2 // Falta el id del user
     });
+    this.autoRefresh();
   }
 
   openDialogEdit(data: DevicesData): void {
@@ -74,13 +75,7 @@ export class DevicesComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.openSnackBar('Edited, nice job ;D');
-        this.apiService.getDevices().subscribe(devices => {
-          devices.map(device => this.devices.push(device));
-          this.dataSource = new MatTableDataSource(this.devices);
-
-          this.dataSource.paginator = this.paginator!;
-          this.dataSource.sort = this.sort!;
-        });
+        this.autoRefresh();
       }
     });
   }
@@ -96,14 +91,7 @@ export class DevicesComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.devices = [];
-        this.apiService.getDevices().subscribe(devices => {
-          devices.map(device => this.devices.push(device));
-          this.dataSource = new MatTableDataSource(this.devices);
-          this.table?.renderRows();
-          this.dataSource.paginator = this.paginator!;
-          this.dataSource.sort = this.sort!;
-        });
+        this.autoRefresh();
         this.openSnackBar('Added, nice job ;D');
       }
     });
@@ -117,6 +105,11 @@ export class DevicesComponent implements AfterViewInit {
 
   deleteDevice(id: number){
     this.apiService.deleteDevice(id);
+    this.autoRefresh();
+  }
+
+  autoRefresh(){
+    console.log('Refreshing...');
     this.devices = [];
     this.apiService.getDevices().subscribe(devices => {
       devices.map(device => this.devices.push(device));
