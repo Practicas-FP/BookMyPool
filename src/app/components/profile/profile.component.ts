@@ -50,13 +50,16 @@ export class ProfileComponent implements AfterViewInit {
 
   returnDevice(id: number){
     this.apiService.returnDevice(id);
-    //this.devices = [];
-    //this.apiService.getDevices().subscribe(devices => {
-    //  devices.map(device => this.devices.push(device));
-    //  this.dataSource = new MatTableDataSource(this.devices);
-    //  this.table?.renderRows();
-    //  this.dataSource.paginator = this.paginator!;
-    //  this.dataSource.sort = this.sort!;
-    //});
+    this.bookDevices = [];
+    this.apiService.getBooks(2).subscribe(books => {
+      books.map(book => this.apiService.getDevice(book.deviceId).subscribe(device => {
+        this.bookDevices.push({book: book, device: device});
+
+        this.dataSource = new MatTableDataSource(this.bookDevices);
+
+        this.dataSource.paginator = this.paginator!;
+        this.dataSource.sort = this.sort!;
+      }));
+    });
   }
 }
