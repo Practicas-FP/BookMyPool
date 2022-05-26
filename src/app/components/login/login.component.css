@@ -4,12 +4,12 @@ body {
 
 .login-block {
   margin: 30px auto;
-  min-height: 93.6vh
+  min-height: auto;
 }
 
 .login-block .auth-box {
   margin: 20px auto 0;
-  max-width: 450px !important
+  max-width: 450px !important;
 }
 
 .card {
@@ -72,7 +72,7 @@ body {
   padding: 10px 19px;
   cursor: pointer;
   background-color: #002b5c;
-  
+
 }
 
 .m-b-20 {
