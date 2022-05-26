@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { BookDeviceData } from 'src/app/models/book-device';
 import { DevicesData } from 'src/app/models/device';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -13,75 +14,29 @@ import { ApiService } from 'src/app/services/api.service';
 export class ProfileComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['serialNumber', 'brand', 'model', 'operativeSystem', 'version', 'actions'];
-  dataSource: MatTableDataSource<DevicesData>;
+  dataSource!: MatTableDataSource<BookDeviceData>;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
-  constructor(public apiService: ApiService) {
-    // Obtener los datos de la BD
-    const devices: Array<DevicesData> = [];
-    devices.push({
-      id: 1,
-      serialNumber: 'AAA',
-      brand: 'xiaomi',
-      model: 'Readmi Note 10 Pro',
-      operativeSystem: 'Android',
-      version: 11,
-      isBooked: 0
-    });
-    devices.push({
-      id: 1,
-      serialNumber: 'bb',
-      brand: 'xiaomi',
-      model: 'Readmi Note 9 Pro',
-      operativeSystem: 'Android',
-      version: 12,
-      isBooked: 1
-    });
-    devices.push({
-      id: 1,
-      serialNumber: 'bb',
-      brand: 'xiaomi',
-      model: 'Readmi Note 9 Pro',
-      operativeSystem: 'Android',
-      version: 12,
-      isBooked: 0
-    });
-    devices.push({
-      id: 1,
-      serialNumber: 'bb',
-      brand: 'xiaomi',
-      model: 'Readmi Note 9 Pro',
-      operativeSystem: 'Android',
-      version: 12,
-      isBooked: 1
-    });
-    devices.push({
-      id: 1,
-      serialNumber: 'bb',
-      brand: 'xiaomi',
-      model: 'Readmi Note 9 Pro',
-      operativeSystem: 'Android',
-      version: 12,
-      isBooked: 1
-    });
-    devices.push({
-      id: 1,
-      serialNumber: 'bb',
-      brand: 'xiaomi',
-      model: 'Readmi Note 9 Pro',
-      operativeSystem: 'Android',
-      version: 12,
-      isBooked: 0
-    });
+  bookDevices: Array<BookDeviceData> = [];
 
-    this.dataSource = new MatTableDataSource(devices);
+  constructor(public apiService: ApiService) {
+    apiService.getBooks(2).subscribe(books => {
+      books.map(book => apiService.getDevice(book.deviceId).subscribe(device => {
+        this.bookDevices.push({book: book, device: device});
+
+        this.dataSource = new MatTableDataSource(this.bookDevices);
+
+        this.dataSource.paginator = this.paginator!;
+        this.dataSource.sort = this.sort!;
+      }));
+    });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator!;
-    this.dataSource.sort = this.sort!;
+    // this.dataSource.paginator = this.paginator!;
+    // this.dataSource.sort = this.sort!;
   }
 
   applyFilter(event: Event) {
@@ -91,5 +46,20 @@ export class ProfileComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  returnDevice(id: number){
+    this.apiService.returnDevice(id);
+    this.bookDevices = [];
+    this.apiService.getBooks(2).subscribe(books => {
+      books.map(book => this.apiService.getDevice(book.deviceId).subscribe(device => {
+        this.bookDevices.push({book: book, device: device});
+
+        this.dataSource = new MatTableDataSource(this.bookDevices);
+
+        this.dataSource.paginator = this.paginator!;
+        this.dataSource.sort = this.sort!;
+      }));
+    });
   }
 }

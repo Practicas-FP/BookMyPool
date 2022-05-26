@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BookData } from '../models/book';
-import { BrandData } from '../models/brand';
 import { DevicesData } from '../models/device';
+import { UserData } from '../models/user';
+import { BrandData } from '../models/brand';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,19 @@ export class ApiService {
 
   getBrands(): Observable<BrandData[]> {
     return this.http.get<BrandData[]>(`${this.baseUrl}/brand`);
+  }
+
+  getEmployee(): Observable<UserData[]> {
+    return this.http.get<UserData[]>(`${this.baseUrl}/employee`);
+  }
+
+  getBrand(): Observable<BrandData[]> {
+    return this.http.get<BrandData[]>(`${this.baseUrl}/brand`);
+  }
+
+  getDevice(id: Number): Observable<DevicesData> {
+    return this.http.get<DevicesData>(`${this.baseUrl}/device/${id}`);
+
   }
 
   putDevice(device: DevicesData) {
@@ -67,11 +81,12 @@ export class ApiService {
       .subscribe(res => console.log(`Book post: ${res}`));
   }
 
-  logIn(email: String, password: String) {
-
+  returnDevice(id: Number) {
+    this.http.post<DevicesData>(`${this.baseUrl}/lend/returndevice/${id}`, { })
+      .subscribe(res => console.log(`Device returned: ${res}`));
   }
 
-  returnDevice(id: Number) {
+  logIn(email: String, password: String) {
 
   }
 }
