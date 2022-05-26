@@ -3,5 +3,5 @@ export interface UserData {
   firstName: String,
   lastName: String,
   email: String,
-  telephone: Number
+  password: String
 }

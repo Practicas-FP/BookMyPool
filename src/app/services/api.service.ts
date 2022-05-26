@@ -5,6 +5,7 @@ import { BookData } from '../models/book';
 import { DevicesData } from '../models/device';
 import { UserData } from '../models/user';
 import { BrandData } from '../models/brand';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -85,7 +86,17 @@ export class ApiService {
       .subscribe(res => console.log(`Device returned: ${res}`));
   }
 
-  logIn(email: String, password: String) {
+  logIn(email: String, password: String): Observable<UserData> {
+    const body = {
+      'email': email,
+      'password': CryptoJS.SHA256(password.trim().toString()).toString()
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
 
+    return this.http.post<UserData>(`${this.baseUrl}/login`, body, httpOptions);
   }
 }
