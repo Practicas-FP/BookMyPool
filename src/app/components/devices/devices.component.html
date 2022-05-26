@@ -57,7 +57,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="book(row.id)">Book</button>
           <button mat-menu-item (click)="openDialogEdit(row)">Edit</button>
-          <button mat-menu-item (click)="deleteDevice(row.id)">Delete</button>
+          <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="deleteDevice(row.id)">Delete</button>
         </mat-menu>
       </td>
     </ng-container>
