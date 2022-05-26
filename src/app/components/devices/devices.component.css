@@ -53,15 +53,7 @@ td, th {
 @media only screen and (max-width : 600px) {
 
   td, th {
-    width: 10%;
-    padding: 10px;
+    padding: 10px !important;
   }
 
-  .anchoModel {
-    width: 30%;
-  }
-
-  .anchoAction {
-    width: 16%;
-  }
 }

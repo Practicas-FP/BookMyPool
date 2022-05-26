@@ -32,7 +32,7 @@
     <!-- Model Column -->
     <ng-container matColumnDef="model">
       <th class="anchoModel" mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
-      <td class="anchoModel" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{ row.model }} </td>
+      <td class="anchoModel" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"><div style="width: 150px;"> {{ row.model }} </div></td>
     </ng-container>
 
     <!-- Operative system Column -->
@@ -51,7 +51,7 @@
     <ng-container matColumnDef="actions">
       <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td class="anchoAction" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
-        <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
+        <button mat-mini-fab [matMenuTriggerFor]="menu" style="background-color: #002b5c; color: white;">
           <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
@@ -71,5 +71,5 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of devices"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of devices"></mat-paginator>
 </div>
