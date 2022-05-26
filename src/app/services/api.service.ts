@@ -26,6 +26,10 @@ export class ApiService {
     return this.http.get<BrandData[]>(`${this.baseUrl}/brand`);
   }
 
+  getDevice(id: Number): Observable<DevicesData> {
+    return this.http.get<DevicesData>(`${this.baseUrl}/device/${id}`);
+  }
+
   putDevice(device: DevicesData) {
     const body = JSON.stringify(device);
     const httpOptions = {
@@ -67,11 +71,12 @@ export class ApiService {
       .subscribe(res => console.log(`Book post: ${res}`));
   }
 
-  logIn(email: String, password: String) {
-
+  returnDevice(id: Number) {
+    this.http.post<DevicesData>(`${this.baseUrl}/lend/returndevice/${id}`, { })
+      .subscribe(res => console.log(`Device returned: ${res}`));
   }
 
-  returnDevice(id: Number) {
+  logIn(email: String, password: String) {
 
   }
 }
