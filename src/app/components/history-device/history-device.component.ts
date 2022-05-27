@@ -6,7 +6,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { EmployeeDeviceData } from 'src/app/models/employee-device';
+import { DevicesData } from 'src/app/models/device';
+import { EmployeeData } from 'src/app/models/employee';
+import { BookEmployeeData } from 'src/app/models/book-employee';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -22,30 +24,37 @@ export class HistoryDeviceComponent implements AfterViewInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  employesDevices: Array<EmployeeDeviceData> = [];
+  employeeBook: Array<BookEmployeeData> = [];
+  device!: DevicesData;
 
   displayedColumns: string[] = ['serialNumber', 'brand', 'model', 'operativeSystem', 'version', 'actions'];
-  dataSource!: MatTableDataSource<EmployeeDeviceData>;
+  dataSource!: MatTableDataSource<BookEmployeeData>;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
   constructor(public apiService: ApiService, private route: ActivatedRoute) {
+    apiService.getDevice(this.route.snapshot.params['id']).subscribe(device => {
+      this.device = device;
+    });
+
     apiService.getHistoryDevice(this.route.snapshot.params['id'])
-      .subscribe(books => books.map(book => apiService.getEmployeeById(book.employeeId)
-        .subscribe(employee => apiService.getDevice(book.deviceId)
-          .subscribe(device => {
-            this.employesDevices.push({
+      .subscribe(books => {
+        books.map(book => apiService.getEmployeeById(book.employeeId)
+          .subscribe(employee => {
+            this.employeeBook.push({
               employee: employee,
-              device: device
+              book: book
             });
+          })
+        );
 
-            this.dataSource = new MatTableDataSource(this.employesDevices);
-            this.dataSource.paginator = this.paginator!;
-            this.dataSource.sort = this.sort!;
+        this.dataSource = new MatTableDataSource(this.employeeBook);
+        this.dataSource.paginator = this.paginator!;
+        this.dataSource.sort = this.sort!;
 
-            console.log(this.employesDevices)
-          }))));
+        console.log(this.employeeBook);
+      });
   }
 
 
