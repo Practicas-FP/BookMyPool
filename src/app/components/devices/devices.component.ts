@@ -8,6 +8,7 @@ import { MatDialog} from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookDialogComponent } from './book-dialog/book-dialog.component';
+import { Router } from '@angular/router';
 
 
 
@@ -29,7 +30,7 @@ export class DevicesComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
-  constructor(public apiService: ApiService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
+  constructor(public apiService: ApiService, public dialog: MatDialog, private _snackBar: MatSnackBar, public router: Router) {
     apiService.getDevices().subscribe(devices => {
       devices.map(device => this.devices.push(device));
       this.dataSource = new MatTableDataSource(this.devices);
@@ -122,5 +123,9 @@ export class DevicesComponent implements AfterViewInit {
       this.dataSource.paginator = this.paginator!;
       this.dataSource.sort = this.sort!;
     });
+  }
+
+  openHistotyDevice(id: Number) {
+    this.router.navigateByUrl(`/history-device/${id}`);
   }
 }
