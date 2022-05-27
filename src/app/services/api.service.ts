@@ -92,7 +92,7 @@ export class ApiService {
 
   returnDevice(id: Number) {
     this.http.post<DevicesData>(`${this.baseUrl}/lend/returndevice/${id}`, { })
-      .subscribe(res => console.log(`Device returned: ${res}`));
+      .subscribe(res => {console.log(`Device returned: ${res}`)});
   }
 
   logIn(email: String, password: String): Observable<UserData> {

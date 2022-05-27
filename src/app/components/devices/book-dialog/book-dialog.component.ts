@@ -30,14 +30,15 @@ export class BookDialogComponent implements OnInit {
   }
 
   save(employeeId: string) {
-    this.apiService.bookDevice({
-      id: null,
-      lendingDate: null,
-      returningDate: null,
-      deviceId: this.data,
-      employeeId: Number(employeeId)
-    });
-
-    this.dialogRef.close(true);
+    if(employeeId != undefined){
+        this.apiService.bookDevice({
+        id: null,
+        lendingDate: null,
+        returningDate: null,
+        deviceId: this.data,
+        employeeId: Number(employeeId)
+      });
+      this.dialogRef.close(true);
+    }
   }
 }
