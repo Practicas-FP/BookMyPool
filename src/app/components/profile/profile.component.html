@@ -10,31 +10,31 @@
     <!-- Serial number Column -->
     <ng-container matColumnDef="serialNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>
-      <td mat-cell *matCellDef="let row"> {{ row.device.serialNumber }} </td>
+      <td mat-cell *matCellDef="let row" (click)="openHistotyDevice(row.device.id)"> {{ row.device.serialNumber }} </td>
     </ng-container>
 
     <!-- Brand Column -->
     <ng-container matColumnDef="brand">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
-      <td mat-cell *matCellDef="let row"> {{ row.device.brand }} </td>
+      <td mat-cell *matCellDef="let row" (click)="openHistotyDevice(row.device.id)"> {{ row.device.brand }} </td>
     </ng-container>
 
     <!-- Model Column -->
     <ng-container matColumnDef="model">
       <th class="anchoModel" mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
-      <td class="anchoModel" mat-cell *matCellDef="let row"> {{ row.device.model }} </td>
+      <td class="anchoModel" mat-cell *matCellDef="let row" (click)="openHistotyDevice(row.id)"> {{ row.device.model }} </td>
     </ng-container>
 
     <!-- Operative system Column -->
     <ng-container matColumnDef="operativeSystem">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Operative system </th>
-      <td mat-cell *matCellDef="let row"> {{ row.device.operativeSystem }} </td>
+      <td mat-cell *matCellDef="let row" (click)="openHistotyDevice(row.device.id)"> {{ row.device.operativeSystem }} </td>
     </ng-container>
 
     <!-- Version Column -->
     <ng-container matColumnDef="version">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Version </th>
-      <td mat-cell *matCellDef="let row"> {{ row.device.version }} </td>
+      <td mat-cell *matCellDef="let row" (click)="openHistotyDevice(row.device.id)"> {{ row.device.version }} </td>
     </ng-container>
 
     <!-- Actions Column -->
