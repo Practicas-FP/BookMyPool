@@ -29,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
+import { BookDialogComponent } from './components/devices/book-dialog/book-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatMenuModule} from '@angular/material/menu';
     DevicesComponent,
     NotFoundComponent,
     ProfileComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    BookDialogComponent
   ],
   imports: [
     BrowserModule,

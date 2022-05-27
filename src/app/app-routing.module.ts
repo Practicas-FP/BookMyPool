@@ -4,12 +4,14 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from './interceptors/auth.guard';
+import { NoAuthGuard } from './interceptors/no-auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/devices', pathMatch: 'full' },
-  { path: 'devices', component: DevicesComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/devices', pathMatch: 'full'},
+  { path: 'devices', component: DevicesComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

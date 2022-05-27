@@ -22,7 +22,7 @@ export class ProfileComponent implements AfterViewInit {
   bookDevices: Array<BookDeviceData> = [];
 
   constructor(public apiService: ApiService) {
-    apiService.getBooks(2).subscribe(books => {
+    apiService.getBooks().subscribe(books => {
       books.map(book => apiService.getDevice(book.deviceId).subscribe(device => {
         this.bookDevices.push({book: book, device: device});
         this.dataSource = new MatTableDataSource(this.bookDevices);
@@ -53,7 +53,7 @@ export class ProfileComponent implements AfterViewInit {
 
   autoRefresh(){
     this.bookDevices = [];
-    this.apiService.getBooks(2).subscribe(books => {
+    this.apiService.getBooks().subscribe(books => {
       books.map(book => this.apiService.getDevice(book.deviceId).subscribe(device => {
         this.bookDevices.push({book: book, device: device});
         this.dataSource = new MatTableDataSource(this.bookDevices);

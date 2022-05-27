@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatDialog} from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BookDialogComponent } from './book-dialog/book-dialog.component';
 
 
 
@@ -52,15 +53,18 @@ export class DevicesComponent implements AfterViewInit {
     }
   }
 
-  book(idDevice: Number) {
-    this.apiService.bookDevice({
-      id: null,
-      lendingDate: null,
-      returningDate: null,
-      deviceId: idDevice,
-      employeeId: 2 // Falta el id del user
+  openDialogBook(id: Number): void {
+    const dialogRef = this.dialog.open(BookDialogComponent, {
+      width: '500px',
+      data: id
     });
-    this.autoRefresh();
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.openSnackBar('Booked, nice job ;D');
+        this.autoRefresh();
+      }
+    });
   }
 
   openDialogEdit(data: DevicesData): void {

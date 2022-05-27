@@ -6,6 +6,7 @@ import { DevicesData } from '../models/device';
 import { UserData } from '../models/user';
 import { BrandData } from '../models/brand';
 import * as CryptoJS from 'crypto-js';
+import { EmployeeData } from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +21,16 @@ export class ApiService {
     return this.http.get<DevicesData[]>(`${this.baseUrl}/device`);
   }
 
-  getBooks(id: Number): Observable<BookData[]> {
-    return this.http.get<BookData[]>(`${this.baseUrl}/lend/byuser/${id}`);
+  getBooks(): Observable<BookData[]> {
+    return this.http.get<BookData[]>(`${this.baseUrl}/lend`);
   }
 
   getBrands(): Observable<BrandData[]> {
     return this.http.get<BrandData[]>(`${this.baseUrl}/brand`);
   }
 
-  getEmployee(): Observable<UserData[]> {
-    return this.http.get<UserData[]>(`${this.baseUrl}/employee`);
+  getEmployee(): Observable<EmployeeData[]> {
+    return this.http.get<EmployeeData[]>(`${this.baseUrl}/employee`);
   }
 
   getBrand(): Observable<BrandData[]> {
