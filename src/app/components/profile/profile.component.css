@@ -9,6 +9,7 @@ table {
 
 td, th {
   width: 18%;
+  padding: 10px !important;
 }
 
 .example-container {
@@ -19,4 +20,12 @@ td, th {
 
 .isBooked {
   background-color: rgb(236, 236, 236);
+}
+
+@media only screen and (max-width : 600px) {
+
+  td, th {
+    padding: 10px !important;
+  }
+
 }
