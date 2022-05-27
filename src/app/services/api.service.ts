@@ -41,6 +41,14 @@ export class ApiService {
     return this.http.get<DevicesData>(`${this.baseUrl}/device/${id}`);
   }
 
+  getHistoryDevice(id: Number): Observable<BookData[]> {
+    return this.http.get<BookData[]>(`${this.baseUrl}/lend/record/bydevice/${id}`);
+  }
+
+  getEmployeeById(id: Number): Observable<EmployeeData> {
+    return this.http.get<EmployeeData>(`${this.baseUrl}/employee/${id}`);
+  }
+
   putDevice(device: DevicesData) {
     const body = JSON.stringify(device);
     const httpOptions = {
