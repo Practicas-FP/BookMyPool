@@ -26,7 +26,7 @@ export class AppComponent {
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private route: Router, userService: UserService) {
+  constructor(private observer: BreakpointObserver, private route: Router, public userService: UserService) {
     this.user = userService.getUser();
   }
 
@@ -48,4 +48,8 @@ export class AppComponent {
       });
   }
 
+  logOut() {
+    this.userService.clearUser();
+    location.reload();
+  }
 }
