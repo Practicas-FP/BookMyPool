@@ -31,6 +31,7 @@ export class ProfileComponent implements AfterViewInit {
         this.dataSource.sort = this.sort!;
       }));
     });
+    console.log(this.bookDevices)
   }
 
   ngAfterViewInit() {
@@ -49,10 +50,13 @@ export class ProfileComponent implements AfterViewInit {
 
   returnDevice(id: number){
     this.apiService.returnDevice(id);
-    this.autoRefresh();
+    setTimeout(() => {
+      this.autoRefresh();
+    }, 500);
   }
 
   autoRefresh(){
+    console.log('refreshing...');
     this.bookDevices = [];
     this.apiService.getBooks().subscribe(books => {
       books.map(book => this.apiService.getDevice(book.deviceId).subscribe(device => {
