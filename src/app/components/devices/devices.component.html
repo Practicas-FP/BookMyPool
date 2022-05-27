@@ -55,7 +55,7 @@
           <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="book(row.id)">Book</button>
+          <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="openDialogBook(row.id)">Book</button>
           <button mat-menu-item (click)="openDialogEdit(row)">Edit</button>
           <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="deleteDevice(row.id)">Delete</button>
         </mat-menu>
@@ -63,7 +63,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openHistotyDevice(row.id)"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>

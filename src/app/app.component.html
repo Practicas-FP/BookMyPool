@@ -15,7 +15,7 @@
 
     <h4 class="name"> {{ user.firstName }} </h4>
 
-    <p class="designation"> Puesto </p>
+    <p class="designation"> {{ user.email }} </p>
 
     <mat-divider></mat-divider>
 
@@ -28,10 +28,10 @@
 
     <button mat-button class="menu-button" routerLink="/profile">
       <mat-icon class="icon">account_circle</mat-icon>
-      <span>Profile</span>
+      <span>Bookings</span>
     </button>
 
-    <button mat-button class="menu-button" routerLink="/logout">
+    <button *ngIf="userService.getLogged()" mat-button class="menu-button" (click)="logOut()">
       <mat-icon class="icon">cancel</mat-icon>
       <span>Log out</span>
     </button>
