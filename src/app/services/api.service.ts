@@ -57,7 +57,7 @@ export class ApiService {
       })
     };
 
-    this.http.put<DevicesData>(`${this.baseUrl}/device`, body, httpOptions)
+    this.http.put<DevicesData>(`${this.baseUrl}/device/${device.id}`, body, httpOptions)
       .subscribe(res => console.log(`Device put: ${res}`));
   }
 
