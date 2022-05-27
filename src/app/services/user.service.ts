@@ -26,8 +26,8 @@ export class UserService {
     };
   }
 
-  getId(): Number {
-    return Number(localStorage.getItem('id')!);
+  getLogged(): boolean {
+    return localStorage.getItem('logged') ? true : false;
   }
 
   clearUser() {

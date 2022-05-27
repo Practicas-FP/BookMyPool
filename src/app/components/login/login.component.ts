@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public apiService: ApiService, private userService: UserService) { }
+  constructor(public apiService: ApiService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +19,8 @@ export class LoginComponent implements OnInit {
     this.apiService.logIn(email, password).subscribe(user => {
       if (user) {
         this.userService.saveUser(user);
+        location.reload();
+        //this.router.navigate(['devices']);
       }
     });
   }

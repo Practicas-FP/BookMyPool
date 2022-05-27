@@ -26,6 +26,7 @@ td, th {
   overflow: auto;
 }
 
+
 .isBooked {
   background-color: rgb(255, 241, 242) !important;
 }
@@ -44,6 +45,14 @@ td, th {
   width: 20px;
   height: 20px;
   border-radius: 50px;
+}
+
+.mat-row .mat-cell {
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: rgb(231, 231, 251) !important;
 }
 
 @media only screen and (max-width : 600px) {
