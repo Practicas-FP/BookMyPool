@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { UserData } from './models/user';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class AppComponent {
   title = 'BookMyPool';
-  public user: any;
+  public user: UserData;
   public uid: string = "guess";
   public profession: string = 'Not registered';
   public userName: any;
@@ -21,9 +23,12 @@ export class AppComponent {
   public hidden = false;
   public appointmentsTotal: number = 0;
 
+
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private route: Router) { }
+  constructor(private observer: BreakpointObserver, private route: Router, userService: UserService) {
+    this.user = userService.getUser();
+  }
 
   ngOnInit(): void {
 

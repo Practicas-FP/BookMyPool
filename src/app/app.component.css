@@ -10,12 +10,13 @@ mat-sidenav {
 }
 
 .content {
-  height: calc(100vh - 130px);
+  height: calc(100vh - 100px);
   border-radius: 10px;
   margin: 16px;
   margin-left: 32px;
   padding: 16px;
   overflow: auto;
+  background-color: white;
 }
 
 mat-sidenav-container {
@@ -60,3 +61,12 @@ mat-divider {
   margin-bottom: 16px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
+@media only screen and (max-width : 900px) {
+
+  .content {
+    margin-left: 16px;
+
+  }
+  
+  }

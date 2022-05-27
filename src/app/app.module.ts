@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+//Components
 import { LoginComponent } from './components/login/login.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { DeviceRegisterComponent } from './components/device-register/device-register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EditDialogComponent } from './components/devices/edit-dialog/edit-dialog.component';
+//Angular material
+import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,6 +22,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -27,9 +36,8 @@ import { MatSortModule } from '@angular/material/sort';
     LoginComponent,
     DevicesComponent,
     NotFoundComponent,
-    DeviceRegisterComponent,
     ProfileComponent,
-
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,15 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatTableModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

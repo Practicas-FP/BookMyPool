@@ -1,46 +1,64 @@
+<button mat-raised-button style="background-color: #002b5c; color: white; float: right;" (click)="openDialogCreate()">Add device</button>
+
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Xiaomi" #input>
 </mat-form-field>
 
-<div  class="example-container">
+<div class="example-container">
   <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- State Column -->
+    <ng-container matColumnDef="state">
+      <th class="semaforo" mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+      <td class="semaforo" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
+        <div [ngClass]="row.isBooked ? 'isBookedSemaforoRed' : 'isBookedSemaforoGreen'"></div>
+        <span hidden>{{ row.isBooked ? 'false' : 'true' }}</span>
+      </td>
+    </ng-container>
 
     <!-- Serial number Column -->
     <ng-container matColumnDef="serialNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.serialNumber }} </td>
+      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{ row.serialNumber }} </td>
     </ng-container>
 
     <!-- Brand Column -->
     <ng-container matColumnDef="brand">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.brand }} </td>
+      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{ row.brand }} </td>
     </ng-container>
 
     <!-- Model Column -->
     <ng-container matColumnDef="model">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.model }} </td>
+      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"><div style="width: 150px;"> {{ row.model }} </div></td>
     </ng-container>
 
     <!-- Operative system Column -->
     <ng-container matColumnDef="operativeSystem">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Operative system </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.operativeSystem }} </td>
+      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{ row.operativeSystem }} </td>
     </ng-container>
 
     <!-- Version Column -->
     <ng-container matColumnDef="version">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Version </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{row.version }} </td>
+      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''"> {{ row.version }} </td>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
-        <button *ngIf="!row.isBooked" mat-flat-button color="primary" (click)="apiService.bookDevice(row.id)">Book</button>
+      <th class="anchoAction" mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+      <td class="anchoAction" mat-cell *matCellDef="let row" [ngClass]="row.isBooked ? 'isBooked' : ''">
+        <button mat-mini-fab [matMenuTriggerFor]="menu" style="background-color: #002b5c; color: white;">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">settings</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="book(row.id)">Book</button>
+          <button mat-menu-item (click)="openDialogEdit(row)">Edit</button>
+          <button mat-menu-item disabled="{{row.isBooked ? true : false}}" (click)="deleteDevice(row.id)">Delete</button>
+        </mat-menu>
       </td>
     </ng-container>
 
@@ -53,5 +71,5 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of devices"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of devices"></mat-paginator>
 </div>

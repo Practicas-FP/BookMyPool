@@ -8,7 +8,16 @@ table {
 }
 
 td, th {
-  width: 20%;
+  width: 10%;
+  padding: 10px !important;
+}
+
+.anchoAction {
+  width: 7%;
+}
+
+.semaforo {
+  width: 5%;
 }
 
 .example-container {
@@ -18,5 +27,29 @@ td, th {
 }
 
 .isBooked {
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(255, 241, 242) !important;
+}
+
+.isBookedSemaforoRed {
+  background-color: red !important;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.isBookedSemaforoGreen {
+  background-color: limegreen !important;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+@media only screen and (max-width : 600px) {
+
+  td, th {
+    padding: 10px !important;
+  }
+
 }
