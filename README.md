@@ -17,6 +17,9 @@ https://documenter.getpostman.com/view/20434752/Uz5CMy6b
 # Get started
 
 ` git clone https://github.com/Practicas-FP/victor.git `
+
 ` cd BookMyPool `
+
 ` npm install `
+
 ` code . `
