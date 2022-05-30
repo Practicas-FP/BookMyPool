@@ -1,7 +1,7 @@
 # BookMyPool
 
 ## Correo
-**Correo: ** becarios.bookmypool@gmail.com
+**Correo:** becarios.bookmypool@gmail.com
 **Password:** KsLJhs54ajPhsdS
 
 ## Cuenta [Heroku](https://www.heroku.com/)
