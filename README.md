@@ -8,7 +8,7 @@
 ## Cuenta [Heroku](https://www.heroku.com/)
 **Email:** becarios.bookmypool@gmail.com
 
-**Password** ************
+**Password:** ************
 
 ## API
 https://bookmypool.herokuapp.com/bookmypool/
